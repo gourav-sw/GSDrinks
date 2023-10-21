@@ -1,5 +1,5 @@
-document.addEventListener("DOMContentLoaded", function(){
-
+document.addEventListener("DOMContentLoaded", async function(){
+  
 })
 
 let users = [];
