@@ -1,6 +1,6 @@
-function createList(){
-  let users = loadData();
-
+async function createList(){
+  let users = await loadData();
+  renderList(users);
   document.querySelector("#addUser").addEventListener("click", function(){
     const userNameElement = document.querySelector("#userName");
     let userName = null;
@@ -66,7 +66,6 @@ function renderList(users){
       renderList(users);
     });
     userListElement.appendChild(listItem);  
-    console.log(users);
   }
 }
 
