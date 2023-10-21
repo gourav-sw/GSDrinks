@@ -1,9 +1,20 @@
-const JSON_BIN_ROOT = "https://api.jsonbin.io/v3"
-const BIN_ID = "65338dbd0574da7622bbbaba"
+const JSON_BIN_ROOT = "https://api.jsonbin.io/v3";
+const BIN_ID = "65338dbd0574da7622bbbaba";
+const MASTER_KEY = "$2a$10$qBfMlk8JhK5FSGZJaBGgb.wR7mD.ihR.Bg.OaQxLopQWoxzOXvA1S";
 
 async function loadData() {
   const readData = await axios.get(`${JSON_BIN_ROOT}/b/${BIN_ID}`);
   return readData.data.record;
+}
+
+async function saveData(UserList) {
+  const writeData = await axios.put(`${JSON_BIN_ROOT}/b/${BIN_ID}`, UserList, {
+    headers: {
+      "Content-Type": "application/json",
+      "X-Master-Key": MASTER_KEY
+    }
+  });
+  return writeData.data;
 }
 
 function addUser(UserList, name, email){

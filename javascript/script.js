@@ -69,6 +69,11 @@ function renderList(users){
   }
 }
 
+const saveButton = document.querySelector("#save-btn");
+    saveButton.addEventListener("click", async function() {
+      saveData(users);
+    })
+
 document.addEventListener("DOMContentLoaded", function(){
   createList();
 })
