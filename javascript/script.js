@@ -1,7 +1,11 @@
-async function createList(){
-  let users = await loadData();
-  renderList(users);
-  document.querySelector("#addUser").addEventListener("click", function(){
+document.addEventListener("DOMContentLoaded", function(){
+
+})
+
+let users = [];
+
+const addButton = document.querySelector("#addUser");
+  addButton.addEventListener("click", function(){
     const userNameElement = document.querySelector("#userName");
     let userName = null;
       while (true) {
@@ -27,18 +31,29 @@ async function createList(){
       }
     }
     while (true) {
-     if (userName == null || userEmail == null) {
+      if (userName == null || userEmail == null) {
       alert("Please correctly re-enter the form for a valid entry, Thank you!");
       break;
-     }
-     else {
+      }
+      else {
       addUser(users, userName, userEmail);
       renderList(users);
       break;
-     }
+      }
     }
-  })
-}
+  });
+
+const loadButton = document.querySelector("#load-btn");
+  loadButton.addEventListener("click", async function() {
+    users = [];
+    users = await loadData();
+    renderList(users);
+  });
+
+const saveButton = document.querySelector("#save-btn");
+  saveButton.addEventListener("click", async function() {
+    saveData(users);
+  });
 
 function renderList(users){
   const userListElement = document.querySelector("#userList");
@@ -68,12 +83,3 @@ function renderList(users){
     userListElement.appendChild(listItem);  
   }
 }
-
-const saveButton = document.querySelector("#save-btn");
-    saveButton.addEventListener("click", async function() {
-      saveData(users);
-    })
-
-document.addEventListener("DOMContentLoaded", function(){
-  createList();
-})
