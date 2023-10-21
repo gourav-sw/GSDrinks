@@ -2,11 +2,9 @@ const JSON_BIN_ROOT = "https://api.jsonbin.io/v3"
 const BIN_ID = "65338dbd0574da7622bbbaba"
 
 async function loadData() {
-  const readData = await axios.get(`${JSON_BIN_ROOT}/${BIN_ID}`);
+  const readData = await axios.get(`${JSON_BIN_ROOT}/b/${BIN_ID}`);
   return readData.data.record;
 }
-
-console.log(loadData())
 
 function addUser(UserList, name, email){
   let newUser = {

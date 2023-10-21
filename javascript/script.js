@@ -1,5 +1,5 @@
 function createList(){
-  let users = []
+  let users = loadData();
 
   document.querySelector("#addUser").addEventListener("click", function(){
     const userNameElement = document.querySelector("#userName");
