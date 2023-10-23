@@ -140,6 +140,10 @@ nav {
   list-style-type: none;
 }
 
+.list-item {
+  padding: 5px 0px;
+}
+
 @media screen and (min-width:800px) {
  .carousel-caption {
   font-size: 150%;

@@ -67,29 +67,25 @@ function renderList(users){
       let newUserName = prompt("Please enter the new name");
       let newUserEmail = prompt("Please enter the new email");
       for (let u of users) {
-        if (newUserEmail != u.email) {
-          break;
-        }
-        else {
-          newUserEmail = null;
+        if (newUserEmail == u.email) {
           alert("Email is already registered, please use another email.");
-          break;
+          return;
         }
       }
       while (true) {
         if (newUserName == null || newUserEmail == null) {
           alert("Incorrect details entered, please try again.");
-          break;
+          return;
         }
         else if (newUserName == "" || newUserEmail == "") {
           alert("Details can't be blank, please try again.");
-          break;
+          return;
         }
         else {
           editUser(users, u.userid, newUserName, newUserEmail);
           renderList(users);
           alert("Edited Successfully.");
-          break;
+          return;
         }
       }
     });
