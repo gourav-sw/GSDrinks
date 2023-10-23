@@ -10,7 +10,7 @@ const addButton = document.querySelector("#addUser");
     let userName = null;
       while (true) {
         if (userNameElement.value == "") {
-          alert("Your name can't be blank!")
+          alert("Your name can't be blank!");
           break;
         }
         else {
@@ -22,11 +22,21 @@ const addButton = document.querySelector("#addUser");
     let userEmail = null;
     while (true) {
       if (userEmailElement.value == "") {
-        alert("Your email can't be blank!")
+        alert("Your email can't be blank!");
         break;
       }
       else {
         userEmail = userEmailElement.value;
+        break;
+      }
+    }
+    for (let u of users) {
+      if (userEmail != u.email) {
+        break;
+      }
+      else {
+        userEmail = null;
+        alert("Email is already registered, please use another email.");
         break;
       }
     }
@@ -38,6 +48,7 @@ const addButton = document.querySelector("#addUser");
       else {
       addUser(users, userName, userEmail);
       renderList(users);
+      alert(`Thank you ${userName} for registering your GetHealthy membership! Check your email inbox for the 10% offer coupon.`);
       break;
       }
     }
