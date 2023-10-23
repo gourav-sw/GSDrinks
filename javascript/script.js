@@ -7,49 +7,36 @@ let users = [];
 const addButton = document.querySelector("#addUser");
   addButton.addEventListener("click", function(){
     const userNameElement = document.querySelector("#userName");
-    let userName = null;
-      while (true) {
-        if (userNameElement.value == "") {
-          alert("Your name can't be blank!");
-          break;
-        }
-        else {
-          userName = userNameElement.value;
-          break;
-        }
-      }
     const userEmailElement = document.querySelector("#userEmail");
+    let userName = null;
     let userEmail = null;
     while (true) {
-      if (userEmailElement.value == "") {
-        alert("Your email can't be blank!");
-        break;
+      if (userNameElement.value == "" || userEmailElement.value == "") {
+        alert("Your details can't be blank, please try again.");
+        return;
       }
       else {
+        userName = userNameElement.value;
         userEmail = userEmailElement.value;
         break;
       }
     }
     for (let u of users) {
-      if (userEmail != u.email) {
-        break;
-      }
-      else {
-        userEmail = null;
+      if (userEmail == u.email) {
         alert("Email is already registered, please use another email.");
-        break;
+        return;
       }
     }
     while (true) {
       if (userName == null || userEmail == null) {
-      alert("Please correctly re-enter the form for a valid entry, Thank you!");
-      break;
+        alert("Please correctly re-enter the form for a valid entry, Thank you!");
+        return;
       }
       else {
-      addUser(users, userName, userEmail);
-      renderList(users);
-      alert(`Thank you ${userName} for registering your GetHealthy membership! Check your email inbox for the 10% offer coupon.`);
-      break;
+        addUser(users, userName, userEmail);
+        renderList(users);
+        alert(`Thank you ${userName} for registering your GetHealthy membership! Check your email inbox for the 10% offer coupon.`);
+        return;
       }
     }
   });
@@ -75,22 +62,43 @@ function renderList(users){
     listItem.innerHTML = `${u.name} (${u.email})
       <button class="btn btn-primary btn-sm edit-btn">Edit</button>
       <button class="btn btn-danger btn-sm delete-btn">Delete</button>`;
-    listItem.querySelector(".edit-btn").addEventListener("click", function(){
-      let newUserName = prompt("Please enter the new name: ");
-      while (newUserName == null) {
-        newUserName = prompt("Please enter correctly: ");
-      }
+    const editButton = listItem.querySelector(".edit-btn");
+    editButton.addEventListener("click", function(){
+      let newUserName = prompt("Please enter the new name");
       let newUserEmail = prompt("Please enter the new email");
-      while (newUserEmail == null) {
-        newUserEmail = prompt("Please enter correctly: ");
+      for (let u of users) {
+        if (newUserEmail != u.email) {
+          break;
+        }
+        else {
+          newUserEmail = null;
+          alert("Email is already registered, please use another email.");
+          break;
+        }
       }
-      editUser(users, u.userid, newUserName, newUserEmail);
-      renderList(users);
+      while (true) {
+        if (newUserName == null || newUserEmail == null) {
+          alert("Incorrect details entered, please try again.");
+          break;
+        }
+        else if (newUserName == "" || newUserEmail == "") {
+          alert("Details can't be blank, please try again.");
+          break;
+        }
+        else {
+          editUser(users, u.userid, newUserName, newUserEmail);
+          renderList(users);
+          alert("Edited Successfully.");
+          break;
+        }
+      }
     });
-    listItem.querySelector(".delete-btn").addEventListener("click", function(){
-      deleteUser(users, u.userid);
-      renderList(users);
-    });
+  
+    const deleteButton = listItem.querySelector(".delete-btn")
+      deleteButton.addEventListener("click", function(){
+        deleteUser(users, u.userid);
+        renderList(users);
+      });
     userListElement.appendChild(listItem);  
   }
 }
