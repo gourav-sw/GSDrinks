@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", async function(){
-  
+  // placeholder for future revisions of loadData() and renderList()
 })
 
 let users = [];
