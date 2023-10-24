@@ -2,8 +2,6 @@ document.addEventListener("DOMContentLoaded", async function(){
   // placeholder for future revisions of loadData() and renderList()
 })
 
-let users = [];
-
 const addButton = document.querySelector("#addUser");
   addButton.addEventListener("click", function(){
     const userNameElement = document.querySelector("#userName");

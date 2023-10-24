@@ -1,6 +1,7 @@
 const JSON_BIN_ROOT = "https://api.jsonbin.io/v3/b";
 const BIN_ID = "65338dbd0574da7622bbbaba";
 const MASTER_KEY = "$2a$10$qBfMlk8JhK5FSGZJaBGgb.wR7mD.ihR.Bg.OaQxLopQWoxzOXvA1S";
+const users = [];
 
 async function loadData() {
   const readData = await axios.get(`${JSON_BIN_ROOT}/${BIN_ID}/latest`);
