@@ -2,6 +2,8 @@ document.addEventListener("DOMContentLoaded", async function(){
   // placeholder for future revisions of loadData() and renderList()
 })
 
+// memberszone.html
+// function for the add button
 const addButton = document.querySelector("#addUser");
   addButton.addEventListener("click", function(){
     const userNameElement = document.querySelector("#userName");
@@ -39,6 +41,7 @@ const addButton = document.querySelector("#addUser");
     }
   });
 
+// function for the load button
 const loadButton = document.querySelector("#load-btn");
   loadButton.addEventListener("click", async function() {
     users = [];
@@ -46,12 +49,15 @@ const loadButton = document.querySelector("#load-btn");
     renderList(users);
   });
 
+// function for the save button
 const saveButton = document.querySelector("#save-btn");
   saveButton.addEventListener("click", async function() {
     saveData(users);
   });
 
+// function for rendering the list
 function renderList(users){
+  // function for generating a list
   const userListElement = document.querySelector("#userList");
   userListElement.innerHTML = "";
   for (let u of users) {
@@ -60,6 +66,8 @@ function renderList(users){
     listItem.innerHTML = `${u.name} (${u.email})
       <button class="btn btn-primary btn-sm edit-btn">Edit</button>
       <button class="btn btn-danger btn-sm delete-btn">Delete</button>`;
+    
+    // function for the edit button
     const editButton = listItem.querySelector(".edit-btn");
     editButton.addEventListener("click", function(){
       let newUserName = prompt("Please enter the new name");
@@ -87,12 +95,14 @@ function renderList(users){
         }
       }
     });
-  
+    
+    // function for the delete button
     const deleteButton = listItem.querySelector(".delete-btn")
       deleteButton.addEventListener("click", function(){
         deleteUser(users, u.userid);
         renderList(users);
       });
+    // call for adding to the list
     userListElement.appendChild(listItem);  
   }
 }

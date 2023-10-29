@@ -7,6 +7,7 @@
   <title>Shop | GS Drinks</title>
   <link rel="icon" type="image/x-icon" href="images/favicon.png">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <link href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" rel="stylesheet" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
   <link href="css/local.css" rel="stylesheet">
 </head>
 
@@ -45,7 +46,7 @@
 
 <main id="shopbody" style="background-image: url(images/shopbgn.jpg);">
 
-  <section>
+  <section id="shoplink-section">
     <h2 class="text-center">Buy Now</h2>
     <p class="text-center">Available now at our select channels</p>
     <div class="row">
@@ -56,7 +57,7 @@
     <div class="row">
       <div class="col border border-0 p-2 text-end">Limited Stock</div>
       <div class="col border border-1 p-2 text-center">SGFR Store</div>
-      <div class="col border border-0 p-2"><a class="shoplink" href="https://www.thesgfrstore.com/">Nearest Store</a></div>
+      <div class="col border border-0 p-2"><button id="sgfr" class="btn btn-primary btn-sm">Show on Map</button></div>
     </div>
     <div class="row">
       <div class="col border border-0 p-2 text-end">Available Now</div>
@@ -84,7 +85,11 @@
       <div class="col border border-0 p-2"><a class="shoplink" href="https://coldstorage.com.sg/">Nearest Store</a></div>
     </div>
   </section>
+  <section id="map-section">
+    <div id="map">
 
+    </div>
+  </section>
 </main>
 
 <footer id="footer" class="text-center text-lg-start p-1" style="background-color: blanchedalmond;">
@@ -148,7 +153,9 @@
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.5.1/axios.min.js" integrity="sha512-emSwuKiMyYedRwflbZB2ghzX8Cw8fmNVgZ6yQNNXXagFzFOaQmbvQ1vmDkddHjm5AITcBIZfC7k4ShQSjgPAmQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="javascript/mapScript.js"></script>
 </body>
 
 </html>
