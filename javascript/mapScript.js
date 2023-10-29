@@ -1,8 +1,14 @@
 // shop.html
 // store map
 
-document.addEventListener("DOMContentLoaded", function(){
-  createMap();
+document.addEventListener("DOMContentLoaded", async function(){
+  const map = createMap();
+  const markers = L.layerGroup();
+    markers.addTo(map);
+  
+  document.querySelector("#sgfr").addEventListener("click", async function(){
+    renderMap("data/locations/sgfr.json", markers)
+  })
 })
 
 function createMap() {
@@ -12,6 +18,7 @@ function createMap() {
     attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
     }).addTo(map);
   map.setView([1.3521, 103.8198], 11);
+  return map;
 }
 
 async function loadData(filePath){
@@ -19,17 +26,11 @@ async function loadData(filePath){
   return readData.data.locations;
 }
 
-const markers = L.layerGroup();
-
-async function renderMap(filePath){
-  markers.clearLayers();
+async function renderMap(filePath, layerGroup){
+  layerGroup.clearLayers();
   const locations = await loadData(filePath);
   for (let l of locations) {
     const marker = L.marker([l.latitude, l.longitude]);
-    marker.addTo(markers);
+    marker.addTo(layerGroup);
   }
 }
-
-document.querySelector("#sgfr").addEventListener("click", function(){
-  renderMap("data/locations/sgfr.json");
-})
