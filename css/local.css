@@ -114,6 +114,7 @@ nav {
   flex-basis: 500px;
   flex-grow: 1;
   flex-shrink: 2;
+  z-index: 1;
 }
 
 #chatbot {
