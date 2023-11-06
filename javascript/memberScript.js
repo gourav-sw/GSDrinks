@@ -2,7 +2,6 @@ document.addEventListener("DOMContentLoaded", async function(){
   // placeholder for future revisions of loadData() and renderList()
 })
 
-// memberszone.html
 // function for the add button
 const addButton = document.querySelector("#addUser");
   addButton.addEventListener("click", function(){
@@ -45,14 +44,14 @@ const addButton = document.querySelector("#addUser");
 const loadButton = document.querySelector("#load-btn");
   loadButton.addEventListener("click", async function() {
     users = [];
-    users = await loadData();
+    users = await loadUserData();
     renderList(users);
   });
 
 // function for the save button
 const saveButton = document.querySelector("#save-btn");
   saveButton.addEventListener("click", async function() {
-    saveData(users);
+    saveUserData(users);
   });
 
 // function for rendering the list
