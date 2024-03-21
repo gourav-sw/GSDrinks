@@ -1,0 +1,14 @@
+{
+  "locations": [
+    {
+      "name": "Botanic Gardens",
+      "latitude": "1.3138",
+      "longitude": "103.8159"
+    },
+    {
+      "name": "Chinatown",
+      "latitude": "1.2839",
+      "longitude": "103.8442"
+    }
+  ]
+}
